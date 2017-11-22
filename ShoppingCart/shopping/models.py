@@ -15,7 +15,7 @@ class Product(models.Model):
         title = models.CharField(max_length = 100, null=True, blank=True)
         description = models.CharField(max_length = 100, null=True, blank=True)
         unit_price = models.DecimalField(max_digits=18, decimal_places=2, verbose_name='unit price')
-        total_items = models.IntegerField
+        total_items = models.IntegerField()
 
         def __str__(self):
             return '%s - %s' % (self.title, self.unit_price)

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+{% for product in products %}
+    <li class="animated wow fadeInDown" data-wow-delay=".2s">
+            <div class="media">
+                <div class="date">
+                    <span class="day">11</span>
+                    <span class="month">May</span>
+                </div>
+                <a href="#">
+                    <img src="{% static 'img/blog_post2.jpg' %}" alt=""/>
+                </a>
+            </div>
+            <h1>{{ product.title }}</h1>
+            <a href="#">
+                <h5>{{ product.description }}</h5>
+            </a>
+            <div>
+                <a href="{% url 'add_to_cart' %}?product_id={{ product_id }}" class="btn btn-success" role="button">
+                    Add to Cart
+                </a>
+            </div>
+            <div class="col-md-2"></div>            
+    </li>    
+    {% endfor %}
+{% endblock %}
