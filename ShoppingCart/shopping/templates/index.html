@@ -19,7 +19,7 @@
                 <h5>{{ product.description }}</h5>
             </a>
             <div>
-                <a href="{% url 'add_to_cart' %}?product_id={{ product_id }}" class="btn btn-success" role="button">
+                <a href="{% url 'add_to_cart' %}?product_id={{ product.id }}" class="btn btn-success" role="button">
                     Add to Cart
                 </a>
             </div>

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <script>
+        function call_updater(url, id){
+            var quantity = doc.getElementById(id).value;
+            url = url + "?item_id=" + id + "&quantity=" + quantity;
+            wind.open(ur, "_self");
+        }
+    </script>
+
+    
+    {% if cart_items %}
+        <div>
+            <a href="{% url 'index' %}">Continue Shopping</a>
+            <a href="{% url 'thank_you' %}">Checkout</a>
+        </div>
+        
+        <div>
+            
+            {% for item in cart_items %}
+                <div>
+                    <p>
+                        {{ item.product.title }}
+                    </p>
+                </div>
+                
+                <div>
+                    <p>
+                        {{ item.product.unit_price }}
+                    </p>
+                </div>
+                
+                <div>
+                    <a href="{% url 'remove_item' %}?item_id={{ item.id }} " role="button" class="btn btn-danger">Remove</a>
+                </div>
+
+                <div>
+                    <input type="text" class="form-control" id="{{ item.id }}" placeholder="quantity" value="{{ item.quantity }}">
+                </div>
+
+                <div>
+                    <button class="btn btn-success" onclick="call_updater('/update_item/', {{ item.id }});">Update</button>
+                </div>
+
+                <div>
+                    {% widthratio item.product.unit_price 1 item.quantity %}
+                </div>
+                <br>
+            {% endfor %}
+                
+        </div>
+    <div>
+        <div>
+            <span>Totla amount:</span>
+        </div>
+        <div>
+            <span>{{ sum }}</span>
+        </div>
+    </div>
+    {% else %}
+    <h1>Your shopping cart is empty.</h1>
+    {% endif %}
+        
+
+
+{% endblock content %}
+    
