@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 nova opcija za program!
 yeeep!?
+=======
+nova opcija za program!
+>>>>>>> c049ecf16b9f361fd60f8965b98ae24e56915155
